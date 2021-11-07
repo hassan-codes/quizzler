@@ -66,7 +66,9 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.green,
               onPressed: () {
                 //The user picked true.
-                questionNumber++;
+                setState(() {
+                  questionNumber++;
+                });
               },
               child: const Text(
                 'True',
@@ -85,9 +87,8 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.red,
               onPressed: () {
                 //The user picked false.
-                questionNumber++;
                 setState(() {
-                  questions[questionNumber];
+                  questionNumber++;
                 });
               },
               child: const Text(
