@@ -66,7 +66,13 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.green,
               onPressed: () {
-                //The user picked true.
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == true) {
+                  print('Correct');
+                } else {
+                  print('Wrong');
+                }
                 setState(() {
                   questionNumber++;
                 });
@@ -87,7 +93,13 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               color: Colors.red,
               onPressed: () {
-                //The user picked false.
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == false) {
+                  print('Correct');
+                } else {
+                  print('Wrong');
+                }
                 setState(() {
                   questionNumber++;
                 });
