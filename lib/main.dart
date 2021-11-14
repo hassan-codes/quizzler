@@ -35,9 +35,17 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getQuestionAnswer();
 
     if (userSelectedAnswer == correctAnswer) {
-      print('Correct');
+      scoreKeeper.add(const Icon(
+        Icons.check_outlined,
+        color: Colors.green,
+        size: 24.0,
+      ));
     } else {
-      print('Wrong');
+      scoreKeeper.add(const Icon(
+        Icons.close,
+        color: Colors.red,
+        size: 24.0,
+      ));
     }
     setState(() {
       quizBrain.nextQuestion();
@@ -103,7 +111,9 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        //TODO: Add a Row here as your score keeper
+        Row(
+          children: scoreKeeper,
+        ),
       ],
     );
   }
