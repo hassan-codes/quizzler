@@ -45,6 +45,7 @@ class _QuizPageState extends State<QuizPage> {
           .show();
       quizBrain.reset();
       scoreKeeper.clear();
+      scoreCounter = 0;
     } else {
       if (userSelectedAnswer == correctAnswer) {
         scoreKeeper.add(const Icon(
