@@ -40,6 +40,8 @@ class QuizBrain {
     _questionNumber = 0;
   }
 
+  int getQuestionCount() => _questionBank.length;
+
   bool isLastQuestion() => _questionNumber == (_questionBank.length - 1);
 
   String getQuestionText() => _questionBank[_questionNumber].questionText;
