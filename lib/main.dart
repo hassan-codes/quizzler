@@ -31,6 +31,19 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
+  void checkAnswer(bool userSelectedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+
+    if (userSelectedAnswer == correctAnswer) {
+      print('Correct');
+    } else {
+      print('Wrong');
+    }
+    setState(() {
+      quizBrain.nextQuestion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -60,16 +73,7 @@ class _QuizPageState extends State<QuizPage> {
               textColor: Colors.white,
               color: Colors.green,
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-
-                if (correctAnswer == true) {
-                  print('Correct');
-                } else {
-                  print('Wrong');
-                }
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
               child: const Text(
                 'True',
@@ -87,15 +91,7 @@ class _QuizPageState extends State<QuizPage> {
             child: FlatButton(
               color: Colors.red,
               onPressed: () {
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == false) {
-                  print('Correct');
-                } else {
-                  print('Wrong');
-                }
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
               child: const Text(
                 'False',
@@ -112,9 +108,3 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
-
-/*
-question1: 'You can lead a cow down stairs but not up stairs.', false,
-question2: 'Approximately one quarter of human bones are in the feet.', true,
-question3: 'A slug\'s blood is green.', true,
-*/
