@@ -31,14 +31,18 @@ class QuizBrain {
   ];
 
   void nextQuestion() {
-    if (_questionNumber < _questionBank.length - 1) _questionNumber++;
+    if (_questionNumber < _questionBank.length - 1) {
+      _questionNumber++;
+    }
   }
 
-  String getQuestionText() {
-    return _questionBank[_questionNumber].questionText;
+  void reset() {
+    _questionNumber = 0;
   }
 
-  bool getQuestionAnswer() {
-    return _questionBank[_questionNumber].questionAnswer;
-  }
+  bool isLastQuestion() => _questionNumber == (_questionBank.length - 1);
+
+  String getQuestionText() => _questionBank[_questionNumber].questionText;
+
+  bool getQuestionAnswer() => _questionBank[_questionNumber].questionAnswer;
 }
